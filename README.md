@@ -1,31 +1,50 @@
 import torch
-print(torch.__version__)
+
+print(torch.version)
+
 print("Torch is working!")
+
 import numpy as np
+
 import pandas as pd
+
 import yfinance as yf
+
 import matplotlib.pyplot as plt
 
 import torch
+
 import torch.nn as nn
+
 import torch.optim as optim
 
 from sklearn.preprocessing import StandardScaler
+
 from sklearn.metrics import root_mean_squared_error
+
 device = torch.device('cuda' if torch.cuda.is_available() else'cpu')
 device
+
 ticker ='AAPL'
+
 df = yf.download(ticker, '2020-01-01')
+
 df
+
 df.Close.plot(figsize=(12,8))
+
 scaler = StandardScaler()
 
 df['Close'] = scaler.fit_transform(df['Close'])
+
 df.Close
+
 # Ensure matching rows
+
 min_len = min(len(x_train), len(y_train))
 
 x_train = x_train[:min_len]
+
 y_train = y_train[:min_len]
 
 if len(y_train.shape) == 1:
